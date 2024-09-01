@@ -25,3 +25,7 @@ body {
 .transparent-button {
   @apply rounded-lg p-2 text-b-m active:brightness-90 disabled:cursor-not-allowed min-h-10 min-w-10 flex items-center justify-center;
 }
+
+.default-tag {
+  @apply rounded-[4px] uppercase text-b-m px-4 py-1;
+}
