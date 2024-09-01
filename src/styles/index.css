@@ -19,5 +19,9 @@ body {
 }
 
 .default-button {
-  @apply rounded-lg p-2 bg-primary-4 text-neutral-1 text-b-m active:brightness-90;
+  @apply transparent-button bg-primary-4;
+}
+
+.transparent-button {
+  @apply rounded-lg p-2 text-b-m active:brightness-90 disabled:cursor-not-allowed min-h-10 min-w-10 flex items-center justify-center;
 }
