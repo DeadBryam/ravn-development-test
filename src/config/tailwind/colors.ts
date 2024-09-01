@@ -16,6 +16,7 @@ const colors = {
   'tertiary-2': '#F2DAAB',
   'tertiary-3': '#EBC77F',
   'tertiary-4': '#E5B454',
+  'blue-4': '#2F61BF',
 };
 
 export { colors };
