@@ -29,3 +29,11 @@ body {
 .default-tag {
   @apply rounded-[4px] uppercase text-b-m px-4 py-1 select-none flex items-center justify-center;
 }
+
+.default-dropdown {
+  @apply bg-neutral-3 p-2 gap-2 rounded-lg shadow-lg border border-neutral-2;
+}
+
+.default-dropdown-item {
+  @apply flex flex-row gap-4 px-4 py-1 items-center h-8 min-w-[120px] text-b-m hover:bg-neutral-4 rounded-md;
+}
