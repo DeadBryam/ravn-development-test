@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 
 type TagProps = {
-  label: string;
+  children?: React.ReactNode;
   className?: string;
   color?: colorMapType;
   type?: 'default' | 'border';
@@ -25,7 +25,7 @@ const borderlessMap = {
   blue: 'border-blue-4 text-blue-4',
 };
 
-function Tag({ label, className, color = 'default', type = 'default' }: TagProps) {
+function Tag({ children, className, color = 'default', type = 'default' }: TagProps) {
   return (
     <span
       className={clsx(
@@ -37,7 +37,7 @@ function Tag({ label, className, color = 'default', type = 'default' }: TagProps
         className
       )}
     >
-      {label.toUpperCase()}
+      {children}
     </span>
   );
 }
