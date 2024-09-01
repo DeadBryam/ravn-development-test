@@ -1,7 +1,9 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import { NavLayout } from '@/layouts';
 import ErrorPage from '@/pages/ErrorPage';
 import HomePage from '@/pages/HomePage';
+import MyTasksPage from '@/pages/MyTasksPage';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 function RouteProvider() {
@@ -12,8 +14,18 @@ function RouteProvider() {
     },
     {
       path: '/',
-      element: <HomePage />,
+      element: <NavLayout />,
       errorElement: <ErrorPage />,
+      children: [
+        {
+          path: '/',
+          element: <HomePage />,
+        },
+        {
+          path: '/my-tasks',
+          element: <MyTasksPage />,
+        },
+      ],
     },
   ]);
 
