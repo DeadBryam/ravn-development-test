@@ -1,5 +1,7 @@
+import { Maybe } from '@/__generated__/types';
+
 type AvatarProps = {
-  src: string;
+  src?: Maybe<string>;
   size?: 'lg' | 'md' | 'sm';
 };
 
@@ -10,7 +12,7 @@ const sizeMap = {
 };
 
 function Avatar({ src, size = 'md' }: AvatarProps) {
-  return <img src={src} alt="avatar" className={`rounded-full ${sizeMap[size]}`} />;
+  return <img src={src ?? ''} alt="avatar" className={`rounded-full bg-neutral-1 ${sizeMap[size]}`} />;
 }
 
 export { Avatar };
