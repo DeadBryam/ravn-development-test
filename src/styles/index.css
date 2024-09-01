@@ -37,3 +37,12 @@ body {
 .default-dropdown-item {
   @apply flex flex-row gap-4 px-4 py-1 items-center h-8 min-w-[120px] text-b-m hover:bg-neutral-4 rounded-md;
 }
+
+.default-sidebar-item {
+  @apply flex items-center gap-4 p-4 text-b-m text-neutral-2 hover:text-primary-4;
+}
+
+.actire-sidebar-item {
+  @apply border-r-4 border-primary-4 !text-primary-4;
+  background: linear-gradient(90deg, rgba(186, 37, 37, 0) 0%, rgba(210, 77, 77, 0.1) 100%);
+}
