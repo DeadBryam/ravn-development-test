@@ -62,3 +62,24 @@ body {
 .card-skeleton {
   @apply animate-pulse bg-neutral-3;
 }
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral-3;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-2;
+}
+
+::-webkit-scrollbar-thumb:active {
+  @apply bg-neutral-1;
+}
