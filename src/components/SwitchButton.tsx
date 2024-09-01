@@ -11,7 +11,7 @@ function SwitchButton({ children, className, active = false, ...props }: ButtonP
   return (
     <Button
       className={clsx('bg-transparent', className, {
-        'border border-primary-4': active,
+        'border border-primary-4 text-primary-4': active,
       })}
       {...props}
     >
