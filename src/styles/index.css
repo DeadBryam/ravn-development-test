@@ -50,3 +50,15 @@ body {
 .default-sidebar {
   @apply bg-neutral-4 rounded-3xl h-full;
 }
+
+.tasks-container {
+  @apply flex flex-row gap-8 overflow-x-auto;
+}
+
+.tasks-column {
+  @apply flex flex-col gap-4 w-[348px] overflow-y-auto overflow-x-hidden;
+}
+
+.card-skeleton {
+  @apply animate-pulse bg-neutral-3;
+}
