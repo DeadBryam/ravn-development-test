@@ -13,3 +13,8 @@ html {
   font-family: 'SF Pro Display', sans-serif;
   font-size: 16px;
 }
+
+
+.default-button {
+  @apply rounded-lg p-2 bg-primary-4 text-neutral-1 text-b-m active:brightness-90;
+}
