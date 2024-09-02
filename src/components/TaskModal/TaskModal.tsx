@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { Form } from 'react-router-dom';
 
-import { CreateTaskInput, PointEstimate, Status, Task } from '@/__generated__/types';
+import { CreateTaskInput, PointEstimate, Status, Task, User } from '@/__generated__/types';
 import { useCreateTask, useUpdateTask } from '@/hooks';
 import { createTaskSchema } from '@/schemas';
 import { useTaskModalStore } from '@/stores';
@@ -26,7 +26,7 @@ const defaultValues = {
 };
 
 function TaskModal() {
-  const [createTask, { loading }] = useCreateTask();
+  const [createTask] = useCreateTask();
   const [updateTask] = useUpdateTask();
   const { closeModal, open, values } = useTaskModalStore();
 
@@ -63,14 +63,30 @@ function TaskModal() {
         });
         close();
       } else {
-        createTask({ variables: { input: data } }).then(close);
+        const timeStamp: number = new Date().getTime();
+        const optimisticResponse = {
+          id: `temp-${timeStamp}`,
+          name: data.name,
+          status: data.status,
+          pointEstimate: data.pointEstimate,
+          dueDate: data.dueDate,
+          tags: data.tags,
+          assignee: { id: data.assigneeId!, __typename: 'User' } as User,
+          __typename: 'Task',
+        } as Task;
+
+        createTask({
+          variables: { input: data },
+          optimisticResponse: { createTask: optimisticResponse },
+        });
+        close();
       }
     },
     [isEditing, updateTask, values, close, createTask]
   );
 
   return (
-    <Modal open={open} onCancel={close} onAccept={form.handleSubmit(onSubmit)} loading={loading} acceptText={isEditing ? 'Update' : 'Create'}>
+    <Modal open={open} onCancel={close} onAccept={form.handleSubmit(onSubmit)} acceptText={isEditing ? 'Update' : 'Create'}>
       <FormProvider {...form}>
         <Form className="flex flex-col gap-4">
           <div className="flex flex-col">
