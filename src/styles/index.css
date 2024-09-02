@@ -67,6 +67,14 @@ body {
   @apply h-16 w-full flex flex-row items-center justify-between bg-neutral-4 rounded-2xl px-6 py-3 gap-6;
 }
 
+.dropdown-title {
+  @apply text-neutral-2 font-semibold text-b-xl px-4 select-none;
+}
+
+.task-modal-field {
+  @apply flex-[1_1_100%] sm:flex-[1_0_calc(50%-8px)] md:flex-auto;
+}
+
 .react-calendar {
   @apply text-neutral-1  text-b-s;
 }
