@@ -73,7 +73,7 @@ function TaskModal() {
       <FormProvider {...form}>
         <Form className="flex flex-col gap-4">
           <div className="flex flex-col">
-            <input type="text" placeholder="Task name" className="w-full p-2 h-8 rounded-md bg-neutral-3" {...form.register('name')} />
+            <input type="text" placeholder="Task name" className="w-full p-2 h-8 rounded-md bg-neutral-3" maxLength={20} {...form.register('name')} />
             <ErrorMessage name="name" />
           </div>
           <div className="flex flex-wrap items-start gap-4">
