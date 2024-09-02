@@ -12,7 +12,7 @@ const sizeMap = {
 };
 
 function Avatar({ src, size = 'md' }: AvatarProps) {
-  return <img src={src ?? ''} alt="avatar" className={`rounded-full bg-neutral-1 ${sizeMap[size]}`} />;
+  return <img src={src ?? 'https://avatar.iran.liara.run/public'} alt="avatar" className={`rounded-full bg-neutral-1 ${sizeMap[size]}`} />;
 }
 
 export { Avatar };
