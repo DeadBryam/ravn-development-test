@@ -1,4 +1,5 @@
 import { TaskTag } from '@/__generated__/types';
+import { converTags } from '@/utils';
 
 import { Tag } from './Tag';
 
@@ -19,7 +20,7 @@ const tagColors = {
 function PlatformTag({ className, tag, type = 'default' }: TagProps) {
   return (
     <Tag className={className} color={tagColors[tag]} type={type}>
-      {tag?.toUpperCase()}
+      {converTags(tag)}
     </Tag>
   );
 }
