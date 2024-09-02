@@ -6,15 +6,14 @@ import { PiSquaresFour } from 'react-icons/pi';
 import { SwitchButton, TopNavigationBar } from '@/components';
 import { TaskModal } from '@/components/TaskModal';
 import { TaskContainer } from '@/components/TasksContainer';
+import { useTaskModalStore } from '@/stores';
 
 function HomePage() {
   const [useGrid, setUseGrid] = useState<boolean>(true);
-  const [showModal, setShowModal] = useState<boolean>(false);
+  const { openModal } = useTaskModalStore();
 
   const setGrid = useCallback(() => setUseGrid(true), []);
   const setList = useCallback(() => setUseGrid(false), []);
-  const openModal = useCallback(() => setShowModal(true), []);
-  const closeModal = useCallback(() => setShowModal(false), []);
 
   return (
     <div className="flex flex-col size-full">
@@ -28,12 +27,12 @@ function HomePage() {
             <PiSquaresFour size={24} />
           </SwitchButton>
         </div>
-        <SwitchButton className="!bg-primary-4" onClick={openModal}>
+        <SwitchButton className="!bg-primary-4" onClick={openModal?.bind(null, undefined)}>
           <FiPlus size={24} />
         </SwitchButton>
       </div>
       <TaskContainer className="flex-1" />
-      <TaskModal open={showModal} onClose={closeModal} />
+      <TaskModal />
     </div>
   );
 }
