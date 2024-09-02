@@ -31,7 +31,7 @@ function DueDateSelector({ name, className }: DueDateSelectorProps) {
 
   const currentValue: string = useMemo(() => {
     if (!value) return 'Due Date';
-    return parseDate(value as string, { format: 'dd MMMM, yyyy' });
+    return parseDate(value as string, { format: 'dd MMM, yyyy' });
   }, [value]);
 
   return (
