@@ -1,6 +1,8 @@
 import clsx from 'clsx';
+import { useCallback } from 'react';
 
 import { Status, Task } from '@/__generated__/types';
+import { useDeleteTask } from '@/hooks';
 import { convertStatus } from '@/utils';
 
 import { Card } from '../Card';
@@ -12,6 +14,15 @@ type TaskColumnProps = {
 };
 
 function TaskColumn({ status, tasks = [], className }: TaskColumnProps) {
+  const [deleteTask] = useDeleteTask();
+
+  const onDelete = useCallback(
+    (task: Task) => {
+      deleteTask({ variables: { input: { id: task.id } } });
+    },
+    [deleteTask]
+  );
+
   return (
     <div key={status} className={clsx('flex flex-col gap-4', className)}>
       <h2 className="text-b-l font-semibold">
@@ -19,7 +30,7 @@ function TaskColumn({ status, tasks = [], className }: TaskColumnProps) {
       </h2>
       <div className="tasks-column h-full">
         {tasks.map((task: Task) => (
-          <Card key={task.id} task={task} />
+          <Card key={task.id} task={task} onDelete={onDelete.bind(null, task)} />
         ))}
       </div>
     </div>
