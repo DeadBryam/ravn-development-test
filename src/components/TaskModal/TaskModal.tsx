@@ -13,6 +13,7 @@ import { Modal } from '../Modal';
 import { AssigneeSelector } from './AssigneeSelector';
 import { DueDateSelector } from './DueDateSelector';
 import { EstimateSelector } from './EstimateSelector';
+import { StatusSelector } from './StatusSelector';
 import { TagsSelector } from './TagsSelector';
 
 const defaultValues = {
@@ -80,6 +81,7 @@ function TaskModal() {
             <EstimateSelector name="pointEstimate" className="task-modal-field" />
             <AssigneeSelector name="assigneeId" className="task-modal-field" />
             <TagsSelector name="tags" className="task-modal-field" />
+            <StatusSelector name="status" className="task-modal-field" />
             <DueDateSelector name="dueDate" className="task-modal-field" />
           </div>
         </Form>
