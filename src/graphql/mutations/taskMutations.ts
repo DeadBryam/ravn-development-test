@@ -11,6 +11,7 @@ export const CREATE_TASK = gql`
       tags
       assignee {
         avatar
+        id
       }
     }
   }
@@ -35,6 +36,7 @@ export const UPDATE_TASK = gql`
       tags
       assignee {
         avatar
+        id
       }
     }
   }

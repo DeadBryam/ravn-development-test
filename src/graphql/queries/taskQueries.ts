@@ -11,6 +11,7 @@ export const GET_TASKS = gql`
       tags
       assignee {
         avatar
+        id
       }
     }
   }
