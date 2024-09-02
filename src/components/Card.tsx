@@ -9,7 +9,7 @@ import { RiNodeTree, RiPencilLine } from 'react-icons/ri';
 import { TbPaperclip } from 'react-icons/tb';
 
 import { Task } from '@/__generated__/types';
-import { convertPoints, parseDate } from '@/utils';
+import { convertPoints, getDaysDiff, parseDate } from '@/utils';
 
 import { Avatar } from './Avatar';
 import { PlatformTag } from './PlatformTag';
@@ -39,9 +39,12 @@ function Card({ className, task, onEdit, onDelete }: CardProps) {
     ];
   }, []);
 
-  const isExpired = useMemo(() => {
-    return task.dueDate < new Date().toISOString();
-  }, [task?.dueDate]);
+  const timeTagVariant = useMemo(() => {
+    const expiringDays = getDaysDiff(task.dueDate);
+    if (expiringDays < 0) return 'primary';
+    if (expiringDays <= 2) return 'tertiary';
+    return 'default';
+  }, [task.dueDate]);
 
   const options = useMemo(() => {
     return [
@@ -80,7 +83,7 @@ function Card({ className, task, onEdit, onDelete }: CardProps) {
       </div>
       <div className="flex justify-between items-center flex-row">
         <p>{convertPoints(task?.pointEstimate)} Pts</p>
-        <Tag className="gap-2" color={isExpired ? 'primary' : 'default'}>
+        <Tag className="gap-2" color={timeTagVariant}>
           <IoMdAlarm size={16} />
           {parseDate(task.dueDate)}
         </Tag>
