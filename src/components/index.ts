@@ -1,6 +1,7 @@
 export * from './Avatar';
 export * from './Button';
 export * from './CheckBox';
+export * from './ConfirmationModal';
 export * from './ErrorBoundary';
 export * from './Modal';
 export * from './PlatformTag';
