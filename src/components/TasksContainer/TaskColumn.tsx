@@ -18,7 +18,7 @@ function TaskColumn({ status, tasks = [], className }: TaskColumnProps) {
 
   const onDelete = useCallback(
     (task: Task) => {
-      deleteTask({ variables: { input: { id: task.id } } });
+      deleteTask({ variables: { input: { id: task.id } }, optimisticResponse: { deleteTask: task } });
     },
     [deleteTask]
   );

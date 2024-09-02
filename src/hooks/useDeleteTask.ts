@@ -12,6 +12,15 @@ const useDeleteTask = () => {
   return useMutation<DeleteTaskMutation, MutationDeleteTaskArgs>(DELETE_TASK, {
     refetchQueries: [{ query: GET_TASKS, variables: { input: {} } }],
     awaitRefetchQueries: true,
+    update: (cache, { data }) => {
+      cache.modify({
+        fields: {
+          tasks(existingTasks = []) {
+            return existingTasks.filter((taskRef: any) => taskRef.__ref !== `Task:${data?.deleteTask.id}`);
+          },
+        },
+      });
+    },
   });
 };
 
