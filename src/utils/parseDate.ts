@@ -6,21 +6,23 @@ type ParseDateOptions = {
   format?: string;
 };
 
+function getDaysDiff(date: DateType): number {
+  const parsedDate = new Date(date);
+  return Math.ceil((parsedDate.getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
+}
+
 function parseDate(date: DateType, options: ParseDateOptions = {}): string {
   if (!date) return '';
 
   const parsedDate = new Date(date);
-  const diff = new Date().getTime() - parsedDate.getTime();
+  const daysDiff = getDaysDiff(parsedDate);
 
-  //today
-  switch (diff) {
-    case 0:
-      return 'Today';
-    case 1:
-      return 'Yesterday';
-    default:
-      return format(parsedDate, options.format || 'dd MMM, yyyy');
-  }
+  if (daysDiff === 0) return 'Today';
+  if (daysDiff === 1) return 'Tomorrow';
+  if (daysDiff === -1) return 'Yesterday';
+  if (daysDiff > -1 && daysDiff <= -5) return `${daysDiff} days ago`;
+
+  return format(parsedDate, options.format || 'dd MMM, yyyy');
 }
 
-export { parseDate };
+export { getDaysDiff, parseDate };
