@@ -23,7 +23,7 @@ body {
 }
 
 .transparent-button {
-  @apply rounded-lg p-2 text-b-m active:brightness-90 disabled:cursor-not-allowed min-h-10 min-w-10 flex items-center justify-center;
+  @apply rounded-lg p-2 text-b-m active:brightness-90 disabled:cursor-not-allowed min-h-10 min-w-10 flex items-center justify-center gap-2 disabled:bg-opacity-70;
 }
 
 .default-tag {
