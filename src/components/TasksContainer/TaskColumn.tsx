@@ -1,5 +1,6 @@
+import autoAnimate from '@formkit/auto-animate';
 import clsx from 'clsx';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Status, Task } from '@/__generated__/types';
 import { useDeleteTask } from '@/hooks';
@@ -17,8 +18,16 @@ type TaskColumnProps = {
 
 function TaskColumn({ status, tasks = [], className }: TaskColumnProps) {
   const [task, setTask] = useState<Task | null>(null);
+  const list = useRef(null);
+
   const [deleteTask] = useDeleteTask();
   const { openModal } = useTaskModalStore();
+
+  useEffect(() => {
+    if (list.current) {
+      autoAnimate(list.current);
+    }
+  }, [list]);
 
   const onDelete = useCallback(() => {
     deleteTask({ variables: { input: { id: task!.id } }, optimisticResponse: { deleteTask: task! } });
@@ -31,7 +40,7 @@ function TaskColumn({ status, tasks = [], className }: TaskColumnProps) {
       <h2 className="text-b-l font-semibold">
         {convertStatus(status)} ({tasks.length?.toString()?.padStart(2, '0')})
       </h2>
-      <div className="tasks-column h-full">
+      <div className="tasks-column h-full" ref={list}>
         {tasks.map((task: Task) => (
           <TaskCard key={task.id} task={task} onDelete={setTask.bind(null, task)} onEdit={openModal.bind(null, task)} />
         ))}
