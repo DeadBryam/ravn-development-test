@@ -1,7 +1,7 @@
 import { Status } from '@/__generated__/types';
 
-function convertStatus(points: Status): string {
-  switch (points) {
+function convertStatus(status: Status): string {
+  switch (status) {
     case Status.IN_PROGRESS:
       return 'In Progress';
     case Status.TODO:
