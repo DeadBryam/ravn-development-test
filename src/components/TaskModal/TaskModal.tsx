@@ -1,13 +1,14 @@
 import { Dialog, DialogPanel } from '@headlessui/react';
 import { nopeResolver } from '@hookform/resolvers/nope';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { If, Then } from 'react-if';
 import { Form } from 'react-router-dom';
 
-import { CreateTaskInput, Status } from '@/__generated__/types';
-import { useCreateTask } from '@/hooks';
+import { CreateTaskInput, PointEstimate, Status, Task } from '@/__generated__/types';
+import { useCreateTask, useUpdateTask } from '@/hooks';
 import { createTaskSchema } from '@/schemas';
+import { useTaskModalStore } from '@/stores';
 
 import { Button } from '../Button';
 import { ErrorBoundary } from '../ErrorBoundary';
@@ -17,44 +18,61 @@ import { DueDateSelector } from './DueDateSelector';
 import { EstimateSelector } from './EstimateSelector';
 import { TagsSelector } from './TagsSelector';
 
-type TaskModalProps = {
-  open: boolean;
-  onClose: () => void;
-};
-
 const defaultValues = {
   name: '',
   assigneeId: '',
   dueDate: '',
-  pointEstimate: undefined,
+  pointEstimate: '',
   status: Status.BACKLOG,
   tags: [],
 };
 
-function TaskModal({ open, onClose }: TaskModalProps) {
+function TaskModal() {
   const [createTask, { loading }] = useCreateTask();
+  const [updateTask] = useUpdateTask();
+  const { closeModal, open, values } = useTaskModalStore();
+
+  const updatedData: CreateTaskInput = useMemo(() => {
+    return {
+      name: values?.name ?? '',
+      status: values?.status ?? Status.BACKLOG,
+      pointEstimate: values?.pointEstimate ?? PointEstimate.ZERO,
+      dueDate: values?.dueDate,
+      tags: values?.tags ?? [],
+      assigneeId: values?.assignee?.id,
+    };
+  }, [values]);
+
+  const isEditing = useMemo(() => Boolean(updatedData) && Boolean(values?.id), [updatedData, values]);
 
   const form = useForm<CreateTaskInput>({
-    defaultValues,
+    defaultValues: defaultValues as CreateTaskInput,
+    values: (updatedData as CreateTaskInput) || {},
     resolver: nopeResolver(createTaskSchema),
   });
 
-  const closeModal = useCallback(() => {
-    form.reset(defaultValues, { keepValues: false });
-    onClose();
-  }, [form, onClose]);
+  const close = useCallback(() => {
+    form.reset(defaultValues as CreateTaskInput, { keepValues: false });
+    closeModal();
+  }, [form, closeModal]);
 
   const onSubmit = useCallback(
     (data: CreateTaskInput) => {
-      createTask({ variables: { input: data } }).then(() => {
-        closeModal();
-      });
+      if (isEditing) {
+        updateTask({
+          variables: { input: { id: values!.id!, ...data } },
+          optimisticResponse: { updateTask: { ...values, ...data } as Task },
+        });
+        close();
+      } else {
+        createTask({ variables: { input: data } }).then(close);
+      }
     },
-    [createTask, closeModal]
+    [isEditing, updateTask, values, close, createTask]
   );
 
   return (
-    <Dialog open={open} onClose={closeModal} className="relative z-50">
+    <Dialog open={open} onClose={() => {}} className="relative z-50">
       <div className="fixed inset-0 flex w-screen items-center justify-center p-4 bg-neutral-4 bg-opacity-50">
         <ErrorBoundary>
           <FormProvider {...form}>
@@ -74,11 +92,11 @@ function TaskModal({ open, onClose }: TaskModalProps) {
                   <Then></Then>
                 </If>
                 <div className="flex flex-row gap-6 justify-end">
-                  <Button type="button" className="bg-transparent" onClick={closeModal}>
+                  <Button type="button" className="bg-transparent" onClick={close} disabled={loading}>
                     Cancel
                   </Button>
                   <Button type="submit" isLoading={loading} onClick={form.handleSubmit(onSubmit)}>
-                    Create
+                    {isEditing ? 'Update' : 'Create'}
                   </Button>
                 </div>
               </DialogPanel>
