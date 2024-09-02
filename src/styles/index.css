@@ -63,6 +63,15 @@ body {
   @apply animate-pulse bg-neutral-3;
 }
 
+.default-top-nav-bar {
+  @apply h-16 w-full flex flex-row items-center justify-between bg-neutral-4 gap-2 rounded-2xl px-6 py-3 gap-6;
+}
+
+input[type='text'] {
+  appearance: none;
+  outline: none;
+}
+
 ::-webkit-scrollbar {
   width: 3px;
   height: 3px;

@@ -6,3 +6,4 @@ export * from './SideBar';
 export * from './SideBarItem';
 export * from './SwitchButton';
 export * from './Tag';
+export * from './TopNavigationBar';
