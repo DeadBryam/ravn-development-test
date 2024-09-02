@@ -36,7 +36,7 @@ function TagsSelector({ name, className }: TagsSelectorProps) {
 
   const currentValue: string | undefined = useMemo(() => {
     if (!value || value?.length === 0) return undefined;
-    return (value as Array<string>).join(', ');
+    return (value as Array<TaskTag>).map(converTags).join(', ');
   }, [value]);
 
   return (
