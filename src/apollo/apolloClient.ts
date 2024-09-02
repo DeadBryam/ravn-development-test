@@ -1,5 +1,6 @@
 import { ApolloClient, ApolloLink, HttpLink, InMemoryCache } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
+import { toast } from 'react-toastify';
 
 const httpLink = new HttpLink({
   uri: import.meta.env.VITE_API_URL,
@@ -20,12 +21,14 @@ const authLink = new ApolloLink((operation, forward) => {
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
-    graphQLErrors.forEach(({ message, locations, path }) =>
-      console.error(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`)
-    );
+    graphQLErrors.forEach(({ message, locations, path }) => {
+      console.error(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`);
+      toast.error(`[GraphQL error]: ${message}`);
+    });
   }
   if (networkError) {
     console.error(`[Network error]: ${networkError}`);
+    toast.error(`[Network error]: ${networkError}`);
   }
 });
 
