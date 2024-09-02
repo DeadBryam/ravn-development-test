@@ -15,14 +15,14 @@ import { Avatar } from './Avatar';
 import { PlatformTag } from './PlatformTag';
 import { Tag } from './Tag';
 
-type CardProps = {
+type TaskCardProps = {
   className?: string;
   onEdit?: () => void;
   onDelete?: () => void;
   task: Task;
 };
 
-function Card({ className, task, onEdit, onDelete }: CardProps) {
+function TaskCard({ className, task, onEdit, onDelete }: TaskCardProps) {
   const items = useMemo(() => {
     return [
       {
@@ -108,4 +108,4 @@ function Card({ className, task, onEdit, onDelete }: CardProps) {
   );
 }
 
-export { Card };
+export { TaskCard };

@@ -6,7 +6,7 @@ import { useDeleteTask } from '@/hooks';
 import { useTaskModalStore } from '@/stores';
 import { convertStatus } from '@/utils';
 
-import { Card } from '../Card';
+import { TaskCard } from '../TaskCard';
 
 type TaskColumnProps = {
   status: Status;
@@ -32,7 +32,7 @@ function TaskColumn({ status, tasks = [], className }: TaskColumnProps) {
       </h2>
       <div className="tasks-column h-full">
         {tasks.map((task: Task) => (
-          <Card key={task.id} task={task} onDelete={onDelete.bind(null, task)} onEdit={openModal.bind(null, task)} />
+          <TaskCard key={task.id} task={task} onDelete={onDelete.bind(null, task)} onEdit={openModal.bind(null, task)} />
         ))}
       </div>
     </div>
