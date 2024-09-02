@@ -5,6 +5,7 @@ type TagProps = {
   className?: string;
   color?: colorMapType;
   type?: 'default' | 'border';
+  onClick?: () => void;
 };
 
 type colorMapType = keyof typeof colorMap;
@@ -25,14 +26,16 @@ const borderlessMap = {
   blue: 'border-blue-4 text-blue-4',
 };
 
-function Tag({ children, className, color = 'default', type = 'default' }: TagProps) {
+function Tag({ children, className, color = 'default', type = 'default', onClick }: TagProps) {
   return (
     <span
+      onClick={onClick}
       className={clsx(
         'default-tag',
         {
           [`bg-opacity-10 ${colorMap[color]}`]: type === 'default',
           [`border ${borderlessMap[color]}`]: type === 'border',
+          'cursor-pointer hover:bg-neutral-4': Boolean(onClick),
         },
         className
       )}
