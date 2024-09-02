@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 
 import { Status, Task } from '@/__generated__/types';
 import { useDeleteTask } from '@/hooks';
+import { useTaskModalStore } from '@/stores';
 import { convertStatus } from '@/utils';
 
 import { Card } from '../Card';
@@ -15,6 +16,7 @@ type TaskColumnProps = {
 
 function TaskColumn({ status, tasks = [], className }: TaskColumnProps) {
   const [deleteTask] = useDeleteTask();
+  const { openModal } = useTaskModalStore();
 
   const onDelete = useCallback(
     (task: Task) => {
@@ -30,7 +32,7 @@ function TaskColumn({ status, tasks = [], className }: TaskColumnProps) {
       </h2>
       <div className="tasks-column h-full">
         {tasks.map((task: Task) => (
-          <Card key={task.id} task={task} onDelete={onDelete.bind(null, task)} />
+          <Card key={task.id} task={task} onDelete={onDelete.bind(null, task)} onEdit={openModal.bind(null, task)} />
         ))}
       </div>
     </div>
