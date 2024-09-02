@@ -88,7 +88,7 @@ function Card({ className, task, onEdit, onDelete }: CardProps) {
           {parseDate(task.dueDate)}
         </Tag>
       </div>
-      <div className="flex flex-row gap-2">
+      <div className="flex flex-row gap-2 overflow-auto">
         {task.tags.map((tag) => (
           <PlatformTag key={tag} tag={tag} />
         ))}
