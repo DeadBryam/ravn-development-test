@@ -41,3 +41,17 @@ export const UPDATE_TASK = gql`
     }
   }
 `;
+
+export const TASK_FRAGMENT = gql`
+  fragment NewTask on Task {
+    id
+    name
+    status
+    pointEstimate
+    dueDate
+    tags
+    assignee {
+      id
+    }
+  }
+`;
