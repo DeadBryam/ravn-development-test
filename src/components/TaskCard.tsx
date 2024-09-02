@@ -1,6 +1,7 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import clsx from 'clsx';
 import { useMemo } from 'react';
+import { useDrag } from 'react-dnd';
 import { GrTrash } from 'react-icons/gr';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 import { IoMdAlarm } from 'react-icons/io';
@@ -10,6 +11,7 @@ import { TbPaperclip } from 'react-icons/tb';
 
 import { Task } from '@/__generated__/types';
 import { convertPoints, getDaysDiff, parseDate } from '@/utils';
+import { dndKeys } from '@/utils/const';
 
 import { Avatar } from './Avatar';
 import { PlatformTag } from './PlatformTag';
@@ -23,6 +25,14 @@ type TaskCardProps = {
 };
 
 function TaskCard({ className, task, onEdit, onDelete }: TaskCardProps) {
+  const [{ isDragging }, drag] = useDrag({
+    type: dndKeys.CARD,
+    item: task,
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+  });
+
   const items = useMemo(() => {
     return [
       {
@@ -62,7 +72,17 @@ function TaskCard({ className, task, onEdit, onDelete }: TaskCardProps) {
   }, [onDelete, onEdit]);
 
   return (
-    <div className={clsx('bg-neutral-4 rounded-lg p-4 flex flex-col gap-4 w-[340px] text-b-m', className)}>
+    <div
+      className={clsx(
+        'bg-neutral-4 rounded-lg p-4 flex flex-col gap-4 w-[340px] text-b-m',
+        {
+          'opacity-40': isDragging,
+        },
+        className
+      )}
+      ref={drag}
+      id={`task-${task.id}`}
+    >
       <div className="flex justify-between items-center flex-row">
         <p>{task.name}</p>
         <Menu>
