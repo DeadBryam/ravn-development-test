@@ -98,7 +98,7 @@ function TaskModal() {
             <AssigneeSelector name="assigneeId" className="task-modal-field" />
             <TagsSelector name="tags" className="task-modal-field" />
             <StatusSelector name="status" className="task-modal-field" />
-            <DueDateSelector name="dueDate" className="task-modal-field" />
+            <DueDateSelector name="dueDate" className="flex-[1_1_100%]" />
           </div>
         </Form>
       </FormProvider>
