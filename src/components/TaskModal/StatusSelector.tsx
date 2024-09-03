@@ -40,20 +40,19 @@ function StatusSelector({ name, className }: StatusSelectorProps) {
   return (
     <Menu>
       <MenuButton className={className}>
-        <If condition={Boolean(currentValue)}>
-          <Then>
-            <Tag className="bg-transparent">
+        <Tag>
+          <If condition={Boolean(currentValue)}>
+            <Then>
               <RiTaskFill size={20} />
               <p className="whitespace-nowrap">{currentValue}</p>
-            </Tag>
-          </Then>
-          <Else>
-            <Tag>
+            </Then>
+            <Else>
               <RiTaskFill size={20} />
               <p>Status</p>
-            </Tag>
-          </Else>
-        </If>
+            </Else>
+          </If>
+        </Tag>
+
         <ErrorMessage name={name} />
       </MenuButton>
       <MenuItems anchor="bottom" className="default-dropdown">
