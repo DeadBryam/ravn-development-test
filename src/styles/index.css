@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'SF Pro Display', sans-serif;
+  font-size: 16px;
+}
+
+body {
+  @apply bg-neutral-5 text-neutral-1;
+}
+
+.default-button {
+  @apply transparent-button bg-primary-4;
+}
+
+.transparent-button {
+  @apply rounded-lg p-2 text-b-m active:brightness-90 disabled:cursor-not-allowed min-h-10 min-w-10 flex items-center justify-center gap-2 disabled:bg-opacity-70;
+}
+
+.default-tag {
+  @apply rounded-[4px] text-b-m px-4 py-1 select-none flex flex-row items-center justify-center gap-2 whitespace-nowrap;
+}
+
+.default-dropdown {
+  @apply bg-neutral-3 p-2 gap-2 rounded-lg shadow-lg border border-neutral-2;
+}
+
+.default-dropdown-item {
+  @apply flex flex-row gap-4 px-4 py-1 items-center h-8 min-w-[120px] text-b-m hover:bg-neutral-4 rounded-md;
+}
+
+.default-sidebar-item {
+  @apply flex items-center gap-4 p-4 text-b-m text-neutral-2 hover:text-primary-4;
+}
+
+.actire-sidebar-item {
+  @apply border-r-4 border-primary-4 !text-primary-4;
+  background: linear-gradient(90deg, rgba(186, 37, 37, 0) 0%, rgba(210, 77, 77, 0.1) 100%);
+}
+
+.default-sidebar {
+  @apply bg-neutral-4 rounded-3xl h-full;
+}
+
+.default-bottom-nav {
+  @apply h-16 w-full flex flex-row items-center justify-between bg-neutral-4 px-6 py-3 gap-6;
+}
+
+.default-bottom-nav-item {
+  @apply flex flex-col items-center gap-1 text-neutral-2 w-full;
+}
+
+.tasks-container {
+  @apply flex flex-row gap-8 overflow-x-auto;
+}
+
+.tasks-column {
+  @apply flex flex-col gap-4 w-[348px] overflow-y-auto overflow-x-hidden;
+}
+
+.card-skeleton {
+  @apply animate-pulse bg-neutral-3;
+}
+
+.default-top-nav-bar {
+  @apply h-14 md:h-16 w-full flex flex-row items-center justify-between bg-neutral-4 rounded-2xl px-6 py-3 gap-3 md:gap-6;
+}
+
+.dropdown-title {
+  @apply text-neutral-2 font-semibold text-b-xl px-4 select-none;
+}
+
+.task-modal-field {
+  @apply flex-[1_1_100%] sm:flex-[1_0_calc(50%-8px)] md:flex-auto;
+}
+
+.react-calendar {
+  @apply text-neutral-1  text-b-s;
+}
+
+.react-calendar__navigation{
+  @apply flex flex-row items-center justify-center gap-4
+}
+
+.react-calendar__navigation__label {
+  @apply flex-[0] whitespace-nowrap;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  @apply flex items-center justify-center;
+}
+
+.react-calendar__tile {
+  @apply hover:bg-primary-4 w-1.5 h-[30px] rounded-sm;
+}
+
+.react-calendar__tile--active  {
+  @apply border-2 border-primary-4;
+}
+
+input[type='text'] {
+  appearance: none;
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral-3;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-2;
+}
+
+::-webkit-scrollbar-thumb:active {
+  @apply bg-neutral-1;
+}

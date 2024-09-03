@@ -1,0 +1,11 @@
+schema: './src/graphql/schema.graphql'
+generates:
+  ./src/__generated__/types.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+    config:
+      namingConvention:
+        typeNames: change-case-all#pascalCase
+        enumValues: change-case-all#upperCase
+        transformUnderscore: true
