@@ -17,8 +17,8 @@ function TopNavigationBar({ className }: TopNavigationBarProps) {
       <CiSearch size={24} />
       <input type="text" placeholder="Search" className="h-16 flex-1 bg-transparent p-2" />
       {/* <PiXCircleLight size={22} /> */}
-      <PiBellSimple size={24} />
-      <Avatar src={data?.profile?.avatar} size="md" />
+      <PiBellSimple size={24} className="hidden lg:block" />
+      <Avatar src={data?.profile?.avatar} size="md" className="hidden lg:block" />
     </div>
   );
 }
