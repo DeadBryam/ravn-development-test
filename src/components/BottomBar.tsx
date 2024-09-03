@@ -1,16 +1,13 @@
 import clsx from 'clsx';
-import { IconType } from 'react-icons';
 import { useLocation } from 'react-router-dom';
+
+import { NavIcon } from '@/types';
 
 import { BottomBarItem } from './BottomBarItem';
 
 type BottomBarProps = {
   className?: string;
-  items: Array<{
-    title: string;
-    icon: IconType;
-    href: string;
-  }>;
+  items: Array<NavIcon>;
 };
 
 function BottomBar({ items, className }: BottomBarProps) {

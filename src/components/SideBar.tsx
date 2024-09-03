@@ -1,17 +1,14 @@
 import clsx from 'clsx';
-import { IconType } from 'react-icons';
 import { useLocation } from 'react-router-dom';
+
+import { NavIcon } from '@/types';
 
 import { SideBarItem } from './SideBarItem';
 import { RavnLogo } from './svg';
 
 type SideBarProps = {
   className?: string;
-  items: Array<{
-    title: string;
-    icon: IconType;
-    href: string;
-  }>;
+  items: Array<NavIcon>;
 };
 
 function SideBar({ items, className }: SideBarProps) {
