@@ -16,13 +16,13 @@ type TaskColumnProps = {
   status: Status;
   tasks?: Array<Task>;
   className?: string;
-  moveItem: (item: Task, from: Status, to: Status) => void;
+  moveItem?: (item: Task, from: Status, to: Status) => void;
 };
 
 function TaskColumn({ status, tasks = [], className, moveItem }: TaskColumnProps) {
   const [{ isOver }, drop] = useDrop({
     accept: dndKeys.CARD,
-    drop: (item: Task) => moveItem(item, item.status, status),
+    drop: (item: Task) => moveItem?.(item, item.status, status),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
