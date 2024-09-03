@@ -1,4 +1,6 @@
 export * from './Avatar';
+export * from './BottomBar';
+export * from './BottomBarItem';
 export * from './Button';
 export * from './CheckBox';
 export * from './ConfirmationModal';

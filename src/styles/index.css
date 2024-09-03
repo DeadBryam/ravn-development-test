@@ -51,6 +51,14 @@ body {
   @apply bg-neutral-4 rounded-3xl h-full;
 }
 
+.default-bottom-nav {
+  @apply h-16 w-full flex flex-row items-center justify-between bg-neutral-4 px-6 py-3 gap-6;
+}
+
+.default-bottom-nav-item {
+  @apply flex flex-col items-center gap-1 text-neutral-2 w-full;
+}
+
 .tasks-container {
   @apply flex flex-row gap-8 overflow-x-auto;
 }
