@@ -5,6 +5,7 @@ export * from './ConfirmationModal';
 export * from './ErrorBoundary';
 export * from './Modal';
 export * from './PlatformTag';
+export * from './ProfileCard';
 export * from './SideBar';
 export * from './SideBarItem';
 export * from './SwitchButton';
