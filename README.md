@@ -77,19 +77,13 @@ app/
 ## Screenshots
 
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <a href="https://postimg.cc/kRmBzgZ2" target="_blank">
-    <img src="https://i.postimg.cc/7hC0CCnn/Screenshot-2024-09-02-at-11-03-31-PM.png" alt="Screenshot-2024-09-02-at-11-03-31-PM" style="width: 45%;"/>
-  </a>
-  <a href="https://postimg.cc/nCTCSZ1L" target="_blank">
-    <img src="https://i.postimg.cc/vZwfBZg5/Screenshot-2024-09-02-at-11-04-00-PM.png" alt="Screenshot-2024-09-02-at-11-04-00-PM" style="width: 45%;"/>
-  </a>
-  <a href="https://postimg.cc/SYfJhpFD" target="_blank">
-    <img src="https://i.postimg.cc/zv9WTJdZ/Screenshot-2024-09-02-at-11-04-10-PM.png" alt="Screenshot-2024-09-02-at-11-04-10-PM" style="width: 45%;"/>
-  </a>
-  <a href="https://postimg.cc/z3CLWTbK" target="_blank">
-    <img src="https://i.postimg.cc/3r62sB3S/Screenshot-2024-09-02-at-11-08-21-PM.png" alt="Screenshot-2024-09-02-at-11-08-21-PM" style="width: 45%;"/>
-  </a>
+  <img width="1200" alt="Screenshot 2024-09-02 at 11 08 21 PM" src="https://github.com/user-attachments/assets/0014e972-20d8-4696-9db8-3dfd607ee14d" style="width: 49%;"/>
+  <img width="1200" alt="Screenshot 2024-09-02 at 11 04 10 PM" src="https://github.com/user-attachments/assets/6aafb576-5258-498c-81ae-c58bc85fb308" style="width: 49%;">
+  <img width="1200" alt="Screenshot 2024-09-02 at 11 04 00 PM" src="https://github.com/user-attachments/assets/f907577c-2599-4bd1-b181-9b2a81ac2290" style="width: 49%;">
+  <img width="1200" alt="Screenshot 2024-09-02 at 11 03 31 PM" src="https://github.com/user-attachments/assets/7a283e99-1d2e-4adf-bed1-7be62fc8ac6b" style="width: 49%;">
+  <img width="1200" alt="ScreenRecording2024-09-02at11 06 17PM" src="https://github.com/user-attachments/assets/9785c862-0b83-43fd-94b3-990eb87413d7" style="width: 99%;">
 </div>
+
 
 ## Demo
 
