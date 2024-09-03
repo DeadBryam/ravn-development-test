@@ -3,8 +3,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { NavLayout } from '@/layouts';
 import ErrorPage from '@/pages/ErrorPage';
 import HomePage from '@/pages/HomePage';
-import MyTasksPage from '@/pages/MyTasksPage';
 import NotFoundPage from '@/pages/NotFoundPage';
+import SettingsPage from '@/pages/SettingsPage';
 
 function RouteProvider() {
   const router = createBrowserRouter([
@@ -22,8 +22,8 @@ function RouteProvider() {
           element: <HomePage />,
         },
         {
-          path: '/my-tasks',
-          element: <MyTasksPage />,
+          path: '/settings',
+          element: <SettingsPage />,
         },
       ],
     },

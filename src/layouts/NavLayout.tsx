@@ -1,4 +1,4 @@
-import { IoMdMenu } from 'react-icons/io';
+import { IoIosSettings } from 'react-icons/io';
 import { PiSquaresFour } from 'react-icons/pi';
 import { Outlet } from 'react-router-dom';
 
@@ -12,9 +12,9 @@ function NavLayout() {
       href: '/',
     },
     {
-      title: 'MY TASKS',
-      icon: IoMdMenu,
-      href: '/my-tasks',
+      title: 'SETTINGS',
+      icon: IoIosSettings,
+      href: '/settings',
     },
   ];
 
