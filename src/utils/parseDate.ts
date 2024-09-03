@@ -20,7 +20,7 @@ function parseDate(date: DateType, options: ParseDateOptions = {}): string {
   if (daysDiff === 0) return 'Today';
   if (daysDiff === 1) return 'Tomorrow';
   if (daysDiff === -1) return 'Yesterday';
-  if (daysDiff > -1 && daysDiff <= -5) return `${daysDiff} days ago`;
+  if (daysDiff < 0 && daysDiff >= -5) return `${Math.abs(daysDiff)} days ago`;
 
   return format(parsedDate, options.format || 'dd MMM, yyyy');
 }
