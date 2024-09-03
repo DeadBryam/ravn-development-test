@@ -64,6 +64,7 @@ app/
 │ ├── schemas/ <- Form schemas.
 │ ├── stores/ <- Application state management.
 │ ├── styles/ <- Global styles and custom styles.
+│ ├── tests/ <- Unit tests.
 │ ├── types/ <- Custom types.
 │ ├── utils/ <- Utility functions.
 │ ├──── const/ <- Useful constants.
